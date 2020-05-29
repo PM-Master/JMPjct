@@ -23,6 +23,7 @@ public class JMP {
     public static String proxyHost;
     public static int port;
     public static String host;
+    public static String translatorUrl;
 
     public static void main(String[] args) throws IOException {
         System.out.println(Arrays.toString(args));
@@ -48,6 +49,9 @@ public class JMP {
             } else if (arg.startsWith("--port")) {
                 String[] argPieces = arg.split("=");
                 port = Integer.parseInt(argPieces[1]);
+            } else if (arg.startsWith("--translator")) {
+                String[] argPieces = arg.split("=");
+                translatorUrl = argPieces[1];
             }
         }
 

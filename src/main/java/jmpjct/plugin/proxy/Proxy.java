@@ -166,22 +166,15 @@ public class Proxy extends Base {
                     HttpURLConnection connection = null;
                     try {
                         //Create connection to translator in policy machine
-                        URL url = new URL("http://localhost:8080/pm/api/translate");
+                        URL url = new URL(JMP.translatorUrl);
                         connection = (HttpURLConnection) url.openConnection();
                         connection.setRequestMethod("POST");
                         connection.setRequestProperty("Content-Type",
                                 "application/json");
 
-                        //password is hard coded
-                        // TODO do not need password
                         String json = "{" +
                                 "\"sql\":\"" + context.query + "\"," +
-                                "\"username\":\"" + context.user + "\"," +
-                                "\"host\":\"" + this.mysqlHost + "\"," +
-                                "\"dbUsername\":\"" + context.authReply.username + "\"," +
-                                "\"dbPassword\":\"root\"," +
-                                "\"port\":" + this.mysqlPort + "," +
-                                "\"database\":\"" + context.schema + "\"" +
+                                "\"schema\":\"" + context.schema + "\"" +
                                 "}";
                         connection.setRequestProperty("Content-Length",
                                 Integer.toString(json.getBytes().length));
@@ -235,7 +228,6 @@ public class Proxy extends Base {
                         for (int i = 5; i < newBytes.length; i++) {
                             newBytes[i] = bytes[i - 5];
                         }
-                        //System.out.println(Arrays.toString(newBytes));
 
                         context.buffer.clear();
                         context.buffer.add(newBytes);
