@@ -1,8 +1,1 @@
-JMP is a high performance daemon that sits between your client and MySQL server(s) that
-can monitor, analyze or transform their communication. Written with a modular, threaded
-structure, you can write plugins to convert queries, update/modify result sets, redirect
-traffic, automatically shard, anything you want.
-
-
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/MPjct/jmpjct/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
-
+docker run --rm -it --name proxy --network-alias proxy --network ndac-network -p 5050:5050 ndac-proxy:0.1 --proxyPort=5050 --host=testdb --port=3306
