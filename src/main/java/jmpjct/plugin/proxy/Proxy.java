@@ -277,7 +277,7 @@ public class Proxy extends Base {
         this.logger.trace("read_query_result");
 
         byte[] packet = Packet.read_packet(this.mysqlIn);
-        //System.out.println("packet: " + new String(packet));
+        System.out.println("packet: " + new String(packet));
         context.buffer.add(packet);
         //this.logger.info("\t" + Com_Query.loadFromPacket(packet).query);
 
