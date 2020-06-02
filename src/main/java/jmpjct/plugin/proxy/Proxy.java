@@ -36,7 +36,7 @@ public class Proxy extends Base {
         // Connect to the mysql server on the other side
         this.mysqlSocket = new Socket(this.mysqlHost, this.mysqlPort);
         this.mysqlSocket.setPerformancePreferences(0, 2, 1);
-        this.mysqlSocket.setTcpNoDelay(true);
+        this.mysqlSocket.setTcpNoDelay(false);
         this.mysqlSocket.setTrafficClass(0x10);
         this.mysqlSocket.setKeepAlive(true);
 
@@ -205,7 +205,7 @@ public class Proxy extends Base {
                         json = response.toString();
 
                         json = json.replaceAll("\\{|\\}", "");
-                        String[] split = json.split("\"entity\":");
+                        String[] split = json.split("\"sql\":");
                         String sql = split[1];
 
                         if(sql.equals("null")) {
